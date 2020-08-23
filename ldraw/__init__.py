@@ -35,6 +35,7 @@ from ldraw.dirs import get_data_dir, get_config_dir, get_cache_dir
 from ldraw.generation.colours import gen_colours
 from ldraw.generation.parts import gen_parts
 from ldraw.parts import Parts
+from ldraw.resources import get_resource
 from ldraw.utils import ensure_exists
 
 try:
@@ -174,7 +175,7 @@ def generate(parts_lst, output_dir, force=False):
 
     with open(library__init__, 'w') as library__init__:
         library__init__.write(LIBRARY_INIT)
-    shutil.copy('ldraw-license.txt', os.path.join(library_path, 'license.txt'))
+    shutil.copy(get_resource('ldraw-license.txt'), os.path.join(library_path, 'license.txt'))
 
     gen_colours(parts, output_dir)
     gen_parts(parts, output_dir)

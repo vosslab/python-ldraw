@@ -15,6 +15,7 @@ setup(
     name="pyldraw",
     description="A package for working with LDraw format files.",
     long_description=get_readme(),
+    include_package_data=True,
     author=" David Boddie <david@boddie.org.uk>",
     maintainer="Matthieu Berthomé <rienafairefr@gmail.com>",
     author_email="rienairefr@gmail.com, david@boddie.org.uk",
