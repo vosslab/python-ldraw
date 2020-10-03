@@ -5,6 +5,7 @@ Generates the ldraw.library.parts namespace
 import codecs
 import os
 import itertools
+import re
 
 from progress.bar import Bar
 import pystache
@@ -90,7 +91,9 @@ def _get_sections(parts):
     for key, value in flatten(parts.parts, sep=SECTION_SEP).items():
         rsplitted = key.rsplit(SECTION_SEP, 1)
         description = rsplitted[-1]
-        sections.setdefault(rsplitted[0], {})[description] = value
+        # Remove non-alphanumeric characters from section names.
+        section_name = re.sub("[^0-9a-zA-Z]+", "_", rsplitted[0])
+        sections.setdefault(section_name, {})[description] = value
     return sections
 
 

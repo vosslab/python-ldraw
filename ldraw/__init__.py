@@ -157,6 +157,8 @@ class CustomImporter:
 
 def generate(parts_lst, output_dir, force=False):
     """ main function for the library generation """
+    print(f"generate reading from {parts_lst}...")
+    print(f"generate writing to {output_dir}...")
     library_path = os.path.join(output_dir, 'library')
     ensure_exists(library_path)
     hash_path = os.path.join(library_path, '__hash__')
@@ -174,7 +176,8 @@ def generate(parts_lst, output_dir, force=False):
 
     with open(library__init__, 'w') as library__init__:
         library__init__.write(LIBRARY_INIT)
-    shutil.copy('ldraw-license.txt', os.path.join(library_path, 'license.txt'))
+    # XXX MDW - Removed this.
+    #shutil.copy('ldraw-license.txt', os.path.join(library_path, 'license.txt'))
 
     gen_colours(parts, output_dir)
     gen_parts(parts, output_dir)
