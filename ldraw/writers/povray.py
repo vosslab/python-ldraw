@@ -239,8 +239,8 @@ class POVRayWriter(object):
         return True
 
     def _write_colour(self, colour, indent):
-        #if colour == Current:
-        #    return
+        if colour == Current:
+            return
         self.pov_file.write(indent * " ")
         self.pov_file.write("pigment { color %s }\n" % self._colour_string(colour))
         finish = self._finish_string(colour)
